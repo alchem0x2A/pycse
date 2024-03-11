@@ -1,0 +1,1067 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interpolation &#8212; pycse - Python Computations in Science and Engineering</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jkitchin/dsmles");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Optimization" href="optimization.html" />
+    <link rel="prev" title="Data analysis" href="data-analysis.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-4H7VFJKEZY"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-4H7VFJKEZY');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/pycse.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">pycse - Python Computations in Science and Engineering</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to pycse - Python Computations in Science and Engineering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The pycse book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/intro.html">
+   The pycse book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/00-intro.html">
+   Introduction to Python and Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/01-jupyter.html">
+   More about using Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/02-integration-1.html">
+   Integration in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/03-fode-1.html">
+   First-order differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/04-fode-2.html">
+   Systems of first-order differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/05-nth-odes.html">
+   N
+   <sup>
+    th
+   </sup>
+   order differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/07-nla-1.html">
+   Nonlinear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/08-nla-2.html">
+   Polynomials in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/09-bvp.html">
+   Boundary value problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/10-min-max.html">
+   Introduction to optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/11-regression.html">
+   Nonlinear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/12-nonlinear-regression-2.html">
+   Uncertainty quantification in nonlinear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/13-constrained-optimization.html">
+   Constrained optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/15-intro-linear-algebra.html">
+   Introduction to linear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/16-linear-algebra.html">
+   Applications of linear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/17-linear-algebra-2.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/18-linear-regression.html">
+   Linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/20-autograd-applications.html">
+   Introduction to automatic differentiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/21-machine-learning.html">
+   Introduction to machine learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/22-ml-2.html">
+   Topics in machine learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/23-gp.html">
+   Gaussian Process Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/conclusions.html">
+   Concluding remarks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The pycse blog
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   The PYCSE blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic-python.html">
+   Basic python usage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math.html">
+   Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra.html">
+   Linear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nonlinear-algebra.html">
+   Nonlinear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics.html">
+   Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-analysis.html">
+   Data analysis
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimization.html">
+   Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="differential-equations.html">
+   Differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="units.html">
+   Units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="programming.html">
+   Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="worked-examples.html">
+   Worked examples
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  pycse documentation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/about.html">
+   About pycse
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/running-pycse.html">
+   Running pycse
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/pycse.html">
+   Documentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/beginner.html">
+   pycse - Beginner mode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/utils.html">
+   pycse.utils
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/execution-statistics.html">
+   Build statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/blog/interpolation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jkitchin/pycse"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jkitchin/pycse/issues/new?title=Issue%20on%20page%20%2Fblog/interpolation.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/jkitchin/pycse/edit/master/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/interpolation.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jkitchin/pycse/master?urlpath=lab/tree/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/interpolation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://lab.amdatascience.com//hub/user-redirect/git-pull?repo=https://github.com/jkitchin/pycse&urlpath=lab/tree/pycse/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/interpolation.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jkitchin/pycse/blob/master/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/interpolation.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#better-interpolate-than-never">
+   Better interpolate than never
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimate-the-value-of-f-at-t-2">
+     Estimate the value of f at t=2.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#improved-interpolation">
+     Improved interpolation?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-inverse-question">
+   The inverse question
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-1">
+     Method 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-2-switch-the-interpolation-order">
+     Method 2: switch the interpolation order
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-harder-problem">
+   A harder problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpolate-on-f-t-then-invert-the-interpolated-number">
+     Interpolate on f(t) then invert the interpolated number
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#invert-f-t-then-interpolate-on-1-f">
+     Invert f(t) then interpolate on 1/f
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion">
+     Discussion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolation-of-data">
+   Interpolation of data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolation-with-splines">
+   Interpolation with splines
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Interpolation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#better-interpolate-than-never">
+   Better interpolate than never
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimate-the-value-of-f-at-t-2">
+     Estimate the value of f at t=2.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#improved-interpolation">
+     Improved interpolation?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-inverse-question">
+   The inverse question
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-1">
+     Method 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-2-switch-the-interpolation-order">
+     Method 2: switch the interpolation order
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-harder-problem">
+   A harder problem
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#interpolate-on-f-t-then-invert-the-interpolated-number">
+     Interpolate on f(t) then invert the interpolated number
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#invert-f-t-then-interpolate-on-1-f">
+     Invert f(t) then interpolate on 1/f
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion">
+     Discussion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolation-of-data">
+   Interpolation of data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolation-with-splines">
+   Interpolation with splines
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="interpolation">
+<h1>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="better-interpolate-than-never">
+<h2>Better interpolate than never<a class="headerlink" href="#better-interpolate-than-never" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#"><span class="doc std std-doc">interpolation</span></a>
+<a class="reference external" href="http://matlab.cheme.cmu.edu/2012/02/02/better-interpolate-than-never/">Matlab post</a></p>
+<p>We often have some data that we have obtained in the lab, and we want to solve some problem using the data. For example, suppose we have this data that describes the value of f at time t.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.6065</span><span class="p">,</span>    <span class="mf">0.3679</span><span class="p">,</span>    <span class="mf">0.0498</span><span class="p">,</span>    <span class="mf">0.0025</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(t)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/interpolation_3_0.png" src="../_images/interpolation_3_0.png" />
+</div>
+</div>
+<div class="section" id="estimate-the-value-of-f-at-t-2">
+<h3>Estimate the value of f at t=2.<a class="headerlink" href="#estimate-the-value-of-f-at-t-2" title="Permalink to this headline">¶</a></h3>
+<p>This is a simple interpolation problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="c1"># default is linear interpolation</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.20885
+[0.20885    0.0498     0.03403333]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function we sample above is actually f(t) = exp(-t). The linearly interpolated example is not too accurate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1353352832366127
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="improved-interpolation">
+<h3>Improved interpolation?<a class="headerlink" href="#improved-interpolation" title="Permalink to this headline">¶</a></h3>
+<p>We can tell <code class="docutils literal notranslate"><span class="pre">interp1d</span></code> to use a different interpolation scheme such as cubic polynomial splines like this. For nonlinear functions, this may improve the accuracy of the interpolation, as it implicitly includes information about the curvature by fitting a cubic polynomial over neighboring points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g2</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g2</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g2</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10848181818181811
+[0.10848182 0.0498     0.08428727]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Interestingly, this is a different value than Matlab’s cubic interpolation. Let us show the cubic spline fit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(t)&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">fit</span> <span class="o">=</span> <span class="n">g2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fit</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/interpolation_13_0.png" src="../_images/interpolation_13_0.png" />
+</div>
+</div>
+<p>Wow. That is a weird looking fit. Very different from what Matlab <a class="reference external" href="http://matlab.cheme.cmu.edu/wp-content/uploads/2012/02/interp_methods_02.png">produces</a>. This is a good teaching moment not to rely blindly on interpolation! We will rely on the linear interpolation from here out which behaves predictably.</p>
+</div>
+</div>
+<div class="section" id="the-inverse-question">
+<h2>The inverse question<a class="headerlink" href="#the-inverse-question" title="Permalink to this headline">¶</a></h2>
+<p>It is easy to interpolate a new value of f given a value of t. What if we want to know the time that f=0.2? We can approach this a few ways.</p>
+<div class="section" id="method-1">
+<h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this headline">¶</a></h3>
+<p>We setup a function that we can use fsolve on. The function will be equal to zero at the time. The second function will look like 0 = 0.2 - f(t). The answer for 0.2=exp(-t) is t = 1.6094. Since we use interpolation here, we will get an approximate answer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.2</span> <span class="o">-</span> <span class="n">g</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">initial_guess</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">ans</span><span class="p">,</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.055642879597611
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="method-2-switch-the-interpolation-order">
+<h3>Method 2: switch the interpolation order<a class="headerlink" href="#method-2-switch-the-interpolation-order" title="Permalink to this headline">¶</a></h3>
+<p>We can switch the order of the interpolation to solve this problem. An issue we have to address in this method is that the “x” values must be monotonically <em>increasing</em>. It is somewhat subtle to reverse a list in python. I will use the cryptic syntax of [::-1] instead of the list.reverse() function or reversed() function. list.reverse() actually reverses the list “in place”, which changes the contents of the variable. That is not what I want. reversed() returns an iterator which is also not what I want. [::-1] is a fancy indexing trick that returns a reversed list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g3</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">f</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">t</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">g3</span><span class="p">(</span><span class="mf">0.2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.055642879597611
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="a-harder-problem">
+<h2>A harder problem<a class="headerlink" href="#a-harder-problem" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we want to know at what time is 1/f = 100? Now we have to decide what do we interpolate: f(t) or 1/f(t). Let us look at both ways and decide what is best. The answer to <span class="math notranslate nohighlight">\(1/exp(-t) = 100\)</span> is 4.6052</p>
+<div class="section" id="interpolate-on-f-t-then-invert-the-interpolated-number">
+<h3>Interpolate on f(t) then invert the interpolated number<a class="headerlink" href="#interpolate-on-f-t-then-invert-the-interpolated-number" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="s1">&#39;objective function. we do some error bounds because we cannot interpolate out of the range.&#39;</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.5</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span> <span class="n">t</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">g</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">initial_guess</span> <span class="o">=</span> <span class="mf">4.5</span>
+<span class="n">a1</span><span class="p">,</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The </span><span class="si">%e</span><span class="s1">rror is </span><span class="si">{0:%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">a1</span> <span class="o">-</span> <span class="mf">4.6052</span><span class="p">)</span><span class="o">/</span><span class="mf">4.6052</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.524312896405919
+The %error is 19.958154%
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="invert-f-t-then-interpolate-on-1-f">
+<h3>Invert f(t) then interpolate on 1/f<a class="headerlink" href="#invert-f-t-then-interpolate-on-1-f" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ig</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">ifunc</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span>
+        <span class="n">t</span><span class="o">=</span><span class="mf">0.5</span>
+    <span class="k">elif</span> <span class="n">t</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="k">return</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">ig</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">initial_guess</span> <span class="o">=</span> <span class="mf">4.5</span>
+<span class="n">a2</span><span class="p">,</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">ifunc</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The </span><span class="si">%e</span><span class="s1">rror is </span><span class="si">{0:%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">a2</span> <span class="o">-</span> <span class="mf">4.6052</span><span class="p">)</span><span class="o">/</span><span class="mf">4.6052</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.63107822410148
+The %error is -21.152649%
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="discussion">
+<h3>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h3>
+<p>In this case you get different errors, one overestimates and one underestimates the answer, and by a lot: ± 20%. Let us look at what is happening.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">f</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.6065</span><span class="p">,</span>    <span class="mf">0.3679</span><span class="p">,</span>    <span class="mf">0.0498</span><span class="p">,</span>    <span class="mf">0.0025</span><span class="p">]</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="c1"># default is linear interpolation</span>
+<span class="n">ig</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> <span class="s1">&#39;ko &#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1/interpolated f(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ig</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;interpolate on 1/f(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1/exp(-x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;1/f(t)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/interpolation_31_0.png" src="../_images/interpolation_31_0.png" />
+</div>
+</div>
+<p>You can see that the 1/interpolated f(x) underestimates the value, while interpolated (1/f(x)) overestimates the value. This is an example of where you clearly need more data in that range to make good estimates. Neither interpolation method is doing a great job. The trouble in reality is that you often do not know the real function to do this analysis. Here you can say the time is probably between 3.6 and 5.5 where 1/f(t) = 100, but you can not read much more than that into it. If you need a more precise answer, you need better data, or you need to use an approach other than interpolation. For example, you could fit an exponential function to the data and use that to estimate values at other times.</p>
+<p>So which is the best to interpolate? I think you should interpolate the quantity that is linear in the problem you want to solve, so in this case I think interpolating 1/f(x) is better. When you use an interpolated function in a nonlinear function, strange, unintuitive things can happen. That is why the blue curve looks odd. Between data points are linear segments in the original interpolation, but when you invert them, you cause the curvature to form.</p>
+</div>
+</div>
+<div class="section" id="interpolation-of-data">
+<h2>Interpolation of data<a class="headerlink" href="#interpolation-of-data" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://matlab.cheme.cmu.edu/2011/08/01/interpolation-of-data/">Matlab post</a></p>
+<p>When we have data at two points but we need data in between them we use interpolation. Suppose we have the points (4,3) and (6,2) and we want to know the value of y at x=4.65, assuming y varies linearly between these points. we use the interp1d command to achieve this. The syntax in python is slightly different than in matlab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">ifunc</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ifunc</span><span class="p">(</span><span class="mf">4.65</span><span class="p">))</span>
+
+
+<span class="n">ifunc</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># do not raise error on out of bounds</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ifunc</span><span class="p">([</span><span class="mf">4.65</span><span class="p">,</span> <span class="mf">5.01</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mi">9</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.675
+[2.675 2.495 2.9     nan]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The default interpolation method is simple linear interpolation between points. Other methods exist too, such as fitting a cubic spline to the data and using the spline representation to interpolate from.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">];</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">];</span> <span class="c1"># y = x^2</span>
+
+<span class="n">xi</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">];</span> <span class="c1"># we want to interpolate on these values</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">y1</span><span class="p">(</span><span class="n">xi</span><span class="p">))</span>
+
+<span class="n">y2</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y2</span><span class="p">(</span><span class="n">xi</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">xi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 2.5  6.5 12.5]
+[ 2.25  6.25 12.25]
+[ 2.25  6.25 12.25]
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case the cubic spline interpolation is  more accurate than the linear interpolation. That is because the underlying data was polynomial in nature, and a spline is like a polynomial. That may not always be the case, and you need some engineering judgement to know which method is best.</p>
+</div>
+<div class="section" id="interpolation-with-splines">
+<h2>Interpolation with splines<a class="headerlink" href="#interpolation-with-splines" title="Permalink to this headline">¶</a></h2>
+<p>When you do not know the functional form of data to fit an equation, you can still fit/interpolate with splines.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># use splines to fit and interpolate data</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fmin</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mi">0</span><span class="p">,</span>      <span class="mi">1</span><span class="p">,</span>      <span class="mi">2</span><span class="p">,</span>      <span class="mi">3</span><span class="p">,</span>      <span class="mi">4</span>    <span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="mf">0.</span><span class="p">,</span>     <span class="mf">0.308</span><span class="p">,</span>  <span class="mf">0.55</span><span class="p">,</span>   <span class="mf">0.546</span><span class="p">,</span>  <span class="mf">0.44</span> <span class="p">])</span>
+
+<span class="c1"># create the interpolating function</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">,</span> <span class="n">bounds_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># to find the maximum, we minimize the negative of the function. We</span>
+<span class="c1"># cannot just multiply f by -1, so we create a new function here.</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+
+<span class="n">xfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">xfit</span><span class="p">),</span><span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xmax</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">xmax</span><span class="p">),</span><span class="s1">&#39;g*&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;data&#39;</span><span class="p">,</span><span class="s1">&#39;fit&#39;</span><span class="p">,</span><span class="s1">&#39;max&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Max point = (</span><span class="si">{0:1.2f}</span><span class="s1">, </span><span class="si">{1:1.2f}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">xmax</span><span class="p">),</span>
+						    <span class="nb">float</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xmax</span><span class="p">))));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: -0.575221
+         Iterations: 12
+         Function evaluations: 24
+</pre></div>
+</div>
+<img alt="../_images/interpolation_41_1.png" src="../_images/interpolation_41_1.png" />
+</div>
+</div>
+<p>There are other good examples at <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html">http://docs.scipy.org/doc/scipy/reference/tutorial/interpolate.html</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./blog"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="data-analysis.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Data analysis</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="optimization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Optimization</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By John Kitchin<br/>
+    
+        &copy; Copyright 2023.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,1312 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plotting &#8212; pycse - Python Computations in Science and Engineering</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jkitchin/dsmles");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Units" href="units.html" />
+    <link rel="prev" title="Differential equations" href="differential-equations.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-4H7VFJKEZY"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-4H7VFJKEZY');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/pycse.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">pycse - Python Computations in Science and Engineering</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to pycse - Python Computations in Science and Engineering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The pycse book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/intro.html">
+   The pycse book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/00-intro.html">
+   Introduction to Python and Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/01-jupyter.html">
+   More about using Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/02-integration-1.html">
+   Integration in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/03-fode-1.html">
+   First-order differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/04-fode-2.html">
+   Systems of first-order differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/05-nth-odes.html">
+   N
+   <sup>
+    th
+   </sup>
+   order differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/07-nla-1.html">
+   Nonlinear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/08-nla-2.html">
+   Polynomials in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/09-bvp.html">
+   Boundary value problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/10-min-max.html">
+   Introduction to optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/11-regression.html">
+   Nonlinear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/12-nonlinear-regression-2.html">
+   Uncertainty quantification in nonlinear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/13-constrained-optimization.html">
+   Constrained optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/15-intro-linear-algebra.html">
+   Introduction to linear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/16-linear-algebra.html">
+   Applications of linear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/17-linear-algebra-2.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/18-linear-regression.html">
+   Linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/20-autograd-applications.html">
+   Introduction to automatic differentiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/21-machine-learning.html">
+   Introduction to machine learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/22-ml-2.html">
+   Topics in machine learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/23-gp.html">
+   Gaussian Process Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/conclusions.html">
+   Concluding remarks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The pycse blog
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   The PYCSE blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic-python.html">
+   Basic python usage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math.html">
+   Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra.html">
+   Linear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nonlinear-algebra.html">
+   Nonlinear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics.html">
+   Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-analysis.html">
+   Data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimization.html">
+   Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="differential-equations.html">
+   Differential equations
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="units.html">
+   Units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="programming.html">
+   Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="worked-examples.html">
+   Worked examples
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  pycse documentation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/about.html">
+   About pycse
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/running-pycse.html">
+   Running pycse
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/pycse.html">
+   Documentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/beginner.html">
+   pycse - Beginner mode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/utils.html">
+   pycse.utils
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/execution-statistics.html">
+   Build statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/blog/plotting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jkitchin/pycse"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jkitchin/pycse/issues/new?title=Issue%20on%20page%20%2Fblog/plotting.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/jkitchin/pycse/edit/master/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/plotting.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jkitchin/pycse/master?urlpath=lab/tree/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/plotting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://lab.amdatascience.com//hub/user-redirect/git-pull?repo=https://github.com/jkitchin/pycse&urlpath=lab/tree/pycse/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/plotting.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jkitchin/pycse/blob/master/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/plotting.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-customizations-modifying-line-text-and-figure-properties">
+   Plot customizations - Modifying line, text and figure properties
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-all-the-text-properties-in-a-figure">
+     Setting all the text properties in a figure.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-two-datasets-with-very-different-scales">
+   Plotting two datasets with very different scales
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-two-plots">
+     Make two plots!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scaling-the-results">
+     Scaling the results
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#double-y-axis-plot">
+     Double-y axis plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subplots">
+     Subplots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#customizing-plots-after-the-fact">
+   Customizing plots after the fact
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fancy-built-in-colors-in-python">
+   Fancy, built-in colors in Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#picasso-s-short-lived-blue-period-with-python">
+   Picasso’s short lived blue period with Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#peak-annotation-in-matplotlib">
+   Peak annotation in matplotlib
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Plotting</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-customizations-modifying-line-text-and-figure-properties">
+   Plot customizations - Modifying line, text and figure properties
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-all-the-text-properties-in-a-figure">
+     Setting all the text properties in a figure.
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-two-datasets-with-very-different-scales">
+   Plotting two datasets with very different scales
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#make-two-plots">
+     Make two plots!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scaling-the-results">
+     Scaling the results
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#double-y-axis-plot">
+     Double-y axis plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subplots">
+     Subplots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#customizing-plots-after-the-fact">
+   Customizing plots after the fact
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fancy-built-in-colors-in-python">
+   Fancy, built-in colors in Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#picasso-s-short-lived-blue-period-with-python">
+   Picasso’s short lived blue period with Python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#peak-annotation-in-matplotlib">
+   Peak annotation in matplotlib
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="plotting">
+<h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="plot-customizations-modifying-line-text-and-figure-properties">
+<h2>Plot customizations - Modifying line, text and figure properties<a class="headerlink" href="#plot-customizations-modifying-line-text-and-figure-properties" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://matlab.cheme.cmu.edu/2011/08/01/plot-customizations-modifying-line-text-and-figure-properties/">Matlab post</a></p>
+<p>Here is a vanilla plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_3_0.png" src="../_images/plotting_3_0.png" />
+</div>
+</div>
+<p>Lets increase the line thickness, change the line color to red, and make the markers red circles with black outlines. I also like figures in presentations to be 6 inches high, and 4 inches wide.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x data&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y data&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontstyle</span><span class="o">=</span><span class="s1">&#39;italic&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="c1"># auto-adjust position of axes to fit figure.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_5_0.png" src="../_images/plotting_5_0.png" />
+</div>
+</div>
+<div class="section" id="setting-all-the-text-properties-in-a-figure">
+<h3>Setting all the text properties in a figure.<a class="headerlink" href="#setting-all-the-text-properties-in-a-figure" title="Permalink to this headline">¶</a></h3>
+<p>You may notice the axis tick labels are not consistent with the labels now. If you have many plots it can be tedious to try setting each text property. Python to the rescue! With these commands you can find all the text instances, and change them all at one time! Likewise, you can change all the lines, and all the axes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x data&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y data&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontstyle</span><span class="o">=</span><span class="s1">&#39;italic&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="c1"># set all font properties</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span>  <span class="n">fig</span><span class="o">.</span><span class="n">findobj</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;set_fontname&#39;</span><span class="p">)</span>
+		      <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;set_fontweight&#39;</span><span class="p">)</span>
+		      <span class="ow">or</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;set_fontsize&#39;</span><span class="p">)):</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">set_fontname</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">)</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">set_fontweight</span><span class="p">(</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># make anything you can set linewidth to be lw=2</span>
+<span class="k">def</span> <span class="nf">myfunc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;set_linewidth&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span>  <span class="n">fig</span><span class="o">.</span><span class="n">findobj</span><span class="p">(</span><span class="n">myfunc</span><span class="p">):</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="c1"># auto-adjust position of axes to fit figure.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Arial&#39; not found.
+</pre></div>
+</div>
+<img alt="../_images/plotting_8_67.png" src="../_images/plotting_8_67.png" />
+</div>
+</div>
+<p>There are many other things you can do!</p>
+</div>
+</div>
+<div class="section" id="plotting-two-datasets-with-very-different-scales">
+<h2>Plotting two datasets with very different scales<a class="headerlink" href="#plotting-two-datasets-with-very-different-scales" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://matlab.cheme.cmu.edu/2011/08/25/plotting-two-datasets-with-very-different-scales/">Matlab plot</a></p>
+<p>Sometimes you will have two datasets you want to plot together, but the scales will be so different it is hard to seem them both in the same plot. Here we examine a few strategies to plotting this kind of data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]);</span>
+<span class="c1"># in this plot y2 looks almost flat!</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_12_0.png" src="../_images/plotting_12_0.png" />
+</div>
+</div>
+<div class="section" id="make-two-plots">
+<h3>Make two plots!<a class="headerlink" href="#make-two-plots" title="Permalink to this headline">¶</a></h3>
+<p>this certainly solves the problem, but you have two full size plots, which can take up a lot of space in a presentation and report. Often your goal in plotting both data sets is to compare them, and it is easiest to compare plots when they are perfectly lined up. Doing that manually can be tedious.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;y1&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;y2&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_15_0.png" src="../_images/plotting_15_0.png" />
+<img alt="../_images/plotting_15_1.png" src="../_images/plotting_15_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="scaling-the-results">
+<h3>Scaling the results<a class="headerlink" href="#scaling-the-results" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes you can scale one dataset so it has a similar magnitude as the other data set. Here we could multiply y2 by 100, and then it will be similar in size to y1. Of course, you need to indicate that y2 has been scaled in the graph somehow. Here we use the legend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">y2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;100*y2&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_18_0.png" src="../_images/plotting_18_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="double-y-axis-plot">
+<h3>Double-y axis plot<a class="headerlink" href="#double-y-axis-plot" title="Permalink to this headline">¶</a></h3>
+<p>Using two separate y-axes can solve your scaling problem. Note that each y-axis is color coded to the data. It can be difficult to read these graphs when printed in black and white</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y1&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tl</span> <span class="ow">in</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+    <span class="n">tl</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_21_0.png" src="../_images/plotting_21_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="subplots">
+<h3>Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">¶</a></h3>
+<p>An alternative approach to double y axes is to use subplots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y1&#39;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y2&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_24_0.png" src="../_images/plotting_24_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="customizing-plots-after-the-fact">
+<h2>Customizing plots after the fact<a class="headerlink" href="#customizing-plots-after-the-fact" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://matlab.cheme.cmu.edu/2011/09/16/customizing-plots-after-the-fact/">Matlab post</a>
+Sometimes it is desirable to make a plot that shows the data you want to present, and to customize the details, e.g. font size/type and line thicknesses afterwards. It can be tedious to try to add the customization code to the existing code that makes the plot. Today, we look at a way to do the customization after the plot is created.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
+<span class="n">xL</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">yL</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;plots of y = x^n&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;x^2&#39;</span><span class="p">,</span> <span class="s1">&#39;x^3&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s1">&#39;size_inches&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+
+<span class="c1"># set lines to dashed</span>
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">findobj</span><span class="p">(</span><span class="n">Line2D</span><span class="p">):</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">set_linestyle</span><span class="p">(</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1">#set(allaxes,&#39;FontName&#39;,&#39;Arial&#39;,&#39;FontWeight&#39;,&#39;Bold&#39;,&#39;LineWidth&#39;,2,&#39;FontSize&#39;,14);</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.text</span> <span class="k">as</span> <span class="nn">text</span>
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">findobj</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">Text</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="s1">&#39;fontname&#39;</span><span class="p">,</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="s1">&#39;fontweight&#39;</span><span class="p">,</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="s1">&#39;fontsize&#39;</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">xL</span><span class="p">,</span> <span class="s1">&#39;fontstyle&#39;</span><span class="p">,</span> <span class="s1">&#39;italic&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">yL</span><span class="p">,</span> <span class="s1">&#39;fontstyle&#39;</span><span class="p">,</span> <span class="s1">&#39;italic&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_27_0.png" src="../_images/plotting_27_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="fancy-built-in-colors-in-python">
+<h2>Fancy, built-in colors in Python<a class="headerlink" href="#fancy-built-in-colors-in-python" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://matlab.cheme.cmu.edu/2011/09/13/check-out-the-new-fall-colors/">Matlab post</a></p>
+<p>Matplotlib has a lot of built-in colors. Here is a list of them, and an example of using them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">cnames</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cnames</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;moccasin&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s1">&#39;seagreen&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;aliceblue&#39;, &#39;antiquewhite&#39;, &#39;aqua&#39;, &#39;aquamarine&#39;, &#39;azure&#39;, &#39;beige&#39;, &#39;bisque&#39;, &#39;black&#39;, &#39;blanchedalmond&#39;, &#39;blue&#39;, &#39;blueviolet&#39;, &#39;brown&#39;, &#39;burlywood&#39;, &#39;cadetblue&#39;, &#39;chartreuse&#39;, &#39;chocolate&#39;, &#39;coral&#39;, &#39;cornflowerblue&#39;, &#39;cornsilk&#39;, &#39;crimson&#39;, &#39;cyan&#39;, &#39;darkblue&#39;, &#39;darkcyan&#39;, &#39;darkgoldenrod&#39;, &#39;darkgray&#39;, &#39;darkgreen&#39;, &#39;darkgrey&#39;, &#39;darkkhaki&#39;, &#39;darkmagenta&#39;, &#39;darkolivegreen&#39;, &#39;darkorange&#39;, &#39;darkorchid&#39;, &#39;darkred&#39;, &#39;darksalmon&#39;, &#39;darkseagreen&#39;, &#39;darkslateblue&#39;, &#39;darkslategray&#39;, &#39;darkslategrey&#39;, &#39;darkturquoise&#39;, &#39;darkviolet&#39;, &#39;deeppink&#39;, &#39;deepskyblue&#39;, &#39;dimgray&#39;, &#39;dimgrey&#39;, &#39;dodgerblue&#39;, &#39;firebrick&#39;, &#39;floralwhite&#39;, &#39;forestgreen&#39;, &#39;fuchsia&#39;, &#39;gainsboro&#39;, &#39;ghostwhite&#39;, &#39;gold&#39;, &#39;goldenrod&#39;, &#39;gray&#39;, &#39;green&#39;, &#39;greenyellow&#39;, &#39;grey&#39;, &#39;honeydew&#39;, &#39;hotpink&#39;, &#39;indianred&#39;, &#39;indigo&#39;, &#39;ivory&#39;, &#39;khaki&#39;, &#39;lavender&#39;, &#39;lavenderblush&#39;, &#39;lawngreen&#39;, &#39;lemonchiffon&#39;, &#39;lightblue&#39;, &#39;lightcoral&#39;, &#39;lightcyan&#39;, &#39;lightgoldenrodyellow&#39;, &#39;lightgray&#39;, &#39;lightgreen&#39;, &#39;lightgrey&#39;, &#39;lightpink&#39;, &#39;lightsalmon&#39;, &#39;lightseagreen&#39;, &#39;lightskyblue&#39;, &#39;lightslategray&#39;, &#39;lightslategrey&#39;, &#39;lightsteelblue&#39;, &#39;lightyellow&#39;, &#39;lime&#39;, &#39;limegreen&#39;, &#39;linen&#39;, &#39;magenta&#39;, &#39;maroon&#39;, &#39;mediumaquamarine&#39;, &#39;mediumblue&#39;, &#39;mediumorchid&#39;, &#39;mediumpurple&#39;, &#39;mediumseagreen&#39;, &#39;mediumslateblue&#39;, &#39;mediumspringgreen&#39;, &#39;mediumturquoise&#39;, &#39;mediumvioletred&#39;, &#39;midnightblue&#39;, &#39;mintcream&#39;, &#39;mistyrose&#39;, &#39;moccasin&#39;, &#39;navajowhite&#39;, &#39;navy&#39;, &#39;oldlace&#39;, &#39;olive&#39;, &#39;olivedrab&#39;, &#39;orange&#39;, &#39;orangered&#39;, &#39;orchid&#39;, &#39;palegoldenrod&#39;, &#39;palegreen&#39;, &#39;paleturquoise&#39;, &#39;palevioletred&#39;, &#39;papayawhip&#39;, &#39;peachpuff&#39;, &#39;peru&#39;, &#39;pink&#39;, &#39;plum&#39;, &#39;powderblue&#39;, &#39;purple&#39;, &#39;rebeccapurple&#39;, &#39;red&#39;, &#39;rosybrown&#39;, &#39;royalblue&#39;, &#39;saddlebrown&#39;, &#39;salmon&#39;, &#39;sandybrown&#39;, &#39;seagreen&#39;, &#39;seashell&#39;, &#39;sienna&#39;, &#39;silver&#39;, &#39;skyblue&#39;, &#39;slateblue&#39;, &#39;slategray&#39;, &#39;slategrey&#39;, &#39;snow&#39;, &#39;springgreen&#39;, &#39;steelblue&#39;, &#39;tan&#39;, &#39;teal&#39;, &#39;thistle&#39;, &#39;tomato&#39;, &#39;turquoise&#39;, &#39;violet&#39;, &#39;wheat&#39;, &#39;white&#39;, &#39;whitesmoke&#39;, &#39;yellow&#39;, &#39;yellowgreen&#39;])
+</pre></div>
+</div>
+<img alt="../_images/plotting_30_1.png" src="../_images/plotting_30_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="picasso-s-short-lived-blue-period-with-python">
+<h2>Picasso’s short lived blue period with Python<a class="headerlink" href="#picasso-s-short-lived-blue-period-with-python" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://matlab.cheme.cmu.edu/2011/09/14/picassos-short-lived-blue-period-with-matlab/">Matlab post</a></p>
+<p>It is an unknown fact that Picasso had a brief blue plotting period with Matlab before moving on to his more famous paintings. It started from irritation with the default colors available in Matlab for plotting. After watching his friend van Gogh cut off his own ear out of frustration with the ugly default colors, Picasso had to do something different.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">#this plots horizontal lines for each y value of m.</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_33_0.png" src="../_images/plotting_33_0.png" />
+</div>
+</div>
+<p>Picasso copied the table available at <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_colors%3E">http://en.wikipedia.org/wiki/List_of_colors&gt;</a>and parsed it into a dictionary of hex codes for new colors. That allowed him to specify a list of beautiful blues for his graph. Picasso eventually gave up on python as an artform, and moved on to painting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./color.table&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">colorname</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">hexcode</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">c</span><span class="p">[</span><span class="n">colorname</span><span class="p">]</span> <span class="o">=</span> <span class="n">hexcode</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">names</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;aero&#39;, &#39;aero blue&#39;, &#39;african violet&#39;, &#39;air force blue (raf)&#39;, &#39;air force blue (usaf)&#39;, &#39;air superiority blue&#39;, &#39;alabama crimson&#39;, &#39;alice blue&#39;, &#39;alizarin crimson&#39;, &#39;alloy orange&#39;, &#39;almond&#39;, &#39;amaranth&#39;, &#39;amazon&#39;, &#39;amber&#39;, &#39;american rose&#39;, &#39;amethyst&#39;, &#39;android green&#39;, &#39;anti-flash white&#39;, &#39;antique brass&#39;, &#39;antique bronze&#39;, &#39;antique fuchsia&#39;, &#39;antique ruby&#39;, &#39;antique white&#39;, &#39;ao (english)&#39;, &#39;apple green&#39;, &#39;apricot&#39;, &#39;aqua&#39;, &#39;aquamarine&#39;, &#39;army green&#39;, &#39;arsenic&#39;, &#39;arylide yellow&#39;, &#39;ash grey&#39;, &#39;asparagus&#39;, &#39;atomic tangerine&#39;, &#39;auburn&#39;, &#39;aureolin&#39;, &#39;aurometalsaurus&#39;, &#39;avocado&#39;, &#39;azure&#39;, &#39;azure mist/web&#39;, &quot;b&#39;dazzled blue&quot;, &#39;baby blue&#39;, &#39;baby blue eyes&#39;, &#39;baby pink&#39;, &#39;baby powder&#39;, &#39;baker-miller pink&#39;, &#39;ball blue&#39;, &#39;banana mania&#39;, &#39;banana yellow&#39;, &#39;barbie pink&#39;, &#39;barn red&#39;, &#39;battleship grey&#39;, &#39;bazaar&#39;, &#39;beau blue&#39;, &#39;beaver&#39;, &#39;beige&#39;, &#39;big dip o’ruby&#39;, &#39;bisque&#39;, &#39;bistre&#39;, &#39;bistre brown&#39;, &#39;bitter lemon&#39;, &#39;bitter lime&#39;, &#39;bittersweet&#39;, &#39;bittersweet shimmer&#39;, &#39;black&#39;, &#39;black bean&#39;, &#39;black leather jacket&#39;, &#39;black olive&#39;, &#39;blanched almond&#39;, &#39;blast-off bronze&#39;, &#39;bleu de france&#39;, &#39;blizzard blue&#39;, &#39;blond&#39;, &#39;blue&#39;, &#39;blue (crayola)&#39;, &#39;blue (munsell)&#39;, &#39;blue (ncs)&#39;, &#39;blue (pigment)&#39;, &#39;blue (ryb)&#39;, &#39;blue bell&#39;, &#39;blue sapphire&#39;, &#39;blue yonder&#39;, &#39;blue-gray&#39;, &#39;blue-green&#39;, &#39;blue-violet&#39;, &#39;blueberry&#39;, &#39;bluebonnet&#39;, &#39;blush&#39;, &#39;bole&#39;, &#39;bondi blue&#39;, &#39;bone&#39;, &#39;boston university red&#39;, &#39;bottle green&#39;, &#39;boysenberry&#39;, &#39;brandeis blue&#39;, &#39;brass&#39;, &#39;brick red&#39;, &#39;bright cerulean&#39;, &#39;bright green&#39;, &#39;bright lavender&#39;, &#39;bright maroon&#39;, &#39;bright pink&#39;, &#39;bright turquoise&#39;, &#39;bright ube&#39;, &#39;brilliant lavender&#39;, &#39;brilliant rose&#39;, &#39;brink pink&#39;, &#39;british racing green&#39;, &#39;bronze&#39;, &#39;bronze yellow&#39;, &#39;brown (traditional)&#39;, &#39;brown (web)&#39;, &#39;brown-nose&#39;, &#39;brunswick green&#39;, &#39;bubble gum&#39;, &#39;bubbles&#39;, &#39;buff&#39;, &#39;bulgarian rose&#39;, &#39;burgundy&#39;, &#39;burlywood&#39;, &#39;burnt orange&#39;, &#39;burnt sienna&#39;, &#39;burnt umber&#39;, &#39;byzantine&#39;, &#39;byzantium&#39;, &#39;cadet&#39;, &#39;cadet blue&#39;, &#39;cadet grey&#39;, &#39;cadmium green&#39;, &#39;cadmium orange&#39;, &#39;cadmium red&#39;, &#39;cadmium yellow&#39;, &#39;café au lait&#39;, &#39;café noir&#39;, &#39;cal poly green&#39;, &#39;cambridge blue&#39;, &#39;camel&#39;, &#39;cameo pink&#39;, &#39;camouflage green&#39;, &#39;canary yellow&#39;, &#39;candy apple red&#39;, &#39;candy pink&#39;, &#39;capri&#39;, &#39;caput mortuum&#39;, &#39;cardinal&#39;, &#39;caribbean green&#39;, &#39;carmine&#39;, &#39;carmine (m&amp;p)&#39;, &#39;carmine pink&#39;, &#39;carmine red&#39;, &#39;carnation pink&#39;, &#39;carnelian&#39;, &#39;carolina blue&#39;, &#39;carrot orange&#39;, &#39;castleton green&#39;, &#39;catalina blue&#39;, &#39;catawba&#39;, &#39;cedar chest&#39;, &#39;ceil&#39;, &#39;celadon&#39;, &#39;celadon blue&#39;, &#39;celadon green&#39;, &#39;celeste (colour)&#39;, &#39;celestial blue&#39;, &#39;cerise&#39;, &#39;cerise pink&#39;, &#39;cerulean&#39;, &#39;cerulean blue&#39;, &#39;cerulean frost&#39;, &#39;cg blue&#39;, &#39;cg red&#39;, &#39;chamoisee&#39;, &#39;champagne&#39;, &#39;charcoal&#39;, &#39;charleston green&#39;, &#39;charm pink&#39;, &#39;chartreuse (traditional)&#39;, &#39;chartreuse (web)&#39;, &#39;cherry&#39;, &#39;cherry blossom pink&#39;, &#39;chestnut&#39;, &#39;china pink&#39;, &#39;china rose&#39;, &#39;chinese red&#39;, &#39;chinese violet&#39;, &#39;chocolate (traditional)&#39;, &#39;chocolate (web)&#39;, &#39;chrome yellow&#39;, &#39;cinereous&#39;, &#39;cinnabar&#39;, &#39;cinnamon&#39;, &#39;citrine&#39;, &#39;citron&#39;, &#39;claret&#39;, &#39;classic rose&#39;, &#39;cobalt&#39;, &#39;cocoa brown&#39;, &#39;coconut&#39;, &#39;coffee&#39;, &#39;columbia blue&#39;, &#39;congo pink&#39;, &#39;cool black&#39;, &#39;cool grey&#39;, &#39;copper&#39;, &#39;copper (crayola)&#39;, &#39;copper penny&#39;, &#39;copper red&#39;, &#39;copper rose&#39;, &#39;coquelicot&#39;, &#39;coral&#39;, &#39;coral pink&#39;, &#39;coral red&#39;, &#39;cordovan&#39;, &#39;corn&#39;, &#39;cornell red&#39;, &#39;cornflower blue&#39;, &#39;cornsilk&#39;, &#39;cosmic latte&#39;, &#39;cotton candy&#39;, &#39;cream&#39;, &#39;crimson&#39;, &#39;crimson glory&#39;, &#39;cyan&#39;, &#39;cyan (process)&#39;, &#39;cyber grape&#39;, &#39;cyber yellow&#39;, &#39;daffodil&#39;, &#39;dandelion&#39;, &#39;dark blue&#39;, &#39;dark blue-gray&#39;, &#39;dark brown&#39;, &#39;dark byzantium&#39;, &#39;dark candy apple red&#39;, &#39;dark cerulean&#39;, &#39;dark chestnut&#39;, &#39;dark coral&#39;, &#39;dark cyan&#39;, &#39;dark electric blue&#39;, &#39;dark goldenrod&#39;, &#39;dark gray&#39;, &#39;dark green&#39;, &#39;dark imperial blue&#39;, &#39;dark jungle green&#39;, &#39;dark khaki&#39;, &#39;dark lava&#39;, &#39;dark lavender&#39;, &#39;dark liver&#39;, &#39;dark liver (horses)&#39;, &#39;dark magenta&#39;, &#39;dark midnight blue&#39;, &#39;dark moss green&#39;, &#39;dark olive green&#39;, &#39;dark orange&#39;, &#39;dark orchid&#39;, &#39;dark pastel blue&#39;, &#39;dark pastel green&#39;, &#39;dark pastel purple&#39;, &#39;dark pastel red&#39;, &#39;dark pink&#39;, &#39;dark powder blue&#39;, &#39;dark raspberry&#39;, &#39;dark red&#39;, &#39;dark salmon&#39;, &#39;dark scarlet&#39;, &#39;dark sea green&#39;, &#39;dark sienna&#39;, &#39;dark sky blue&#39;, &#39;dark slate blue&#39;, &#39;dark slate gray&#39;, &#39;dark spring green&#39;, &#39;dark tan&#39;, &#39;dark tangerine&#39;, &#39;dark taupe&#39;, &#39;dark terra cotta&#39;, &#39;dark turquoise&#39;, &#39;dark vanilla&#39;, &#39;dark violet&#39;, &#39;dark yellow&#39;, &#39;dartmouth green&#39;, &quot;davy&#39;s grey&quot;, &#39;debian red&#39;, &#39;deep carmine&#39;, &#39;deep carmine pink&#39;, &#39;deep carrot orange&#39;, &#39;deep cerise&#39;, &#39;deep champagne&#39;, &#39;deep chestnut&#39;, &#39;deep coffee&#39;, &#39;deep fuchsia&#39;, &#39;deep jungle green&#39;, &#39;deep lemon&#39;, &#39;deep lilac&#39;, &#39;deep magenta&#39;, &#39;deep mauve&#39;, &#39;deep moss green&#39;, &#39;deep peach&#39;, &#39;deep pink&#39;, &#39;deep ruby&#39;, &#39;deep saffron&#39;, &#39;deep sky blue&#39;, &#39;deep space sparkle&#39;, &#39;deep taupe&#39;, &#39;deep tuscan red&#39;, &#39;deer&#39;, &#39;denim&#39;, &#39;desert&#39;, &#39;desert sand&#39;, &#39;diamond&#39;, &#39;dim gray&#39;, &#39;dirt&#39;, &#39;dodger blue&#39;, &#39;dogwood rose&#39;, &#39;dollar bill&#39;, &#39;donkey brown&#39;, &#39;drab&#39;, &#39;duke blue&#39;, &#39;dust storm&#39;, &#39;earth yellow&#39;, &#39;ebony&#39;, &#39;ecru&#39;, &#39;eggplant&#39;, &#39;eggshell&#39;, &#39;egyptian blue&#39;, &#39;electric blue&#39;, &#39;electric crimson&#39;, &#39;electric cyan&#39;, &#39;electric green&#39;, &#39;electric indigo&#39;, &#39;electric lavender&#39;, &#39;electric lime&#39;, &#39;electric purple&#39;, &#39;electric ultramarine&#39;, &#39;electric violet&#39;, &#39;electric yellow&#39;, &#39;emerald&#39;, &#39;english green&#39;, &#39;english lavender&#39;, &#39;english red&#39;, &#39;english violet&#39;, &#39;eton blue&#39;, &#39;eucalyptus&#39;, &#39;fallow&#39;, &#39;falu red&#39;, &#39;fandango&#39;, &#39;fandango pink&#39;, &#39;fashion fuchsia&#39;, &#39;fawn&#39;, &#39;feldgrau&#39;, &#39;feldspar&#39;, &#39;fern green&#39;, &#39;ferrari red&#39;, &#39;field drab&#39;, &#39;fire engine red&#39;, &#39;firebrick&#39;, &#39;flame&#39;, &#39;flamingo pink&#39;, &#39;flattery&#39;, &#39;flavescent&#39;, &#39;flax&#39;, &#39;flirt&#39;, &#39;floral white&#39;, &#39;fluorescent orange&#39;, &#39;fluorescent pink&#39;, &#39;fluorescent yellow&#39;, &#39;folly&#39;, &#39;forest green (traditional)&#39;, &#39;forest green (web)&#39;, &#39;french beige&#39;, &#39;french bistre&#39;, &#39;french blue&#39;, &#39;french lilac&#39;, &#39;french lime&#39;, &#39;french mauve&#39;, &#39;french raspberry&#39;, &#39;french rose&#39;, &#39;french sky blue&#39;, &#39;french wine&#39;, &#39;fresh air&#39;, &#39;fuchsia&#39;, &#39;fuchsia (crayola)&#39;, &#39;fuchsia pink&#39;, &#39;fuchsia rose&#39;, &#39;fulvous&#39;, &#39;fuzzy wuzzy&#39;, &#39;gainsboro&#39;, &#39;gamboge&#39;, &#39;ghost white&#39;, &#39;giants orange&#39;, &#39;ginger&#39;, &#39;glaucous&#39;, &#39;glitter&#39;, &#39;go green&#39;, &#39;gold (metallic)&#39;, &#39;gold (web) (golden)&#39;, &#39;gold fusion&#39;, &#39;golden brown&#39;, &#39;golden poppy&#39;, &#39;golden yellow&#39;, &#39;goldenrod&#39;, &#39;granny smith apple&#39;, &#39;grape&#39;, &#39;gray&#39;, &#39;gray (html/css gray)&#39;, &#39;gray (x11 gray)&#39;, &#39;gray-asparagus&#39;, &#39;gray-blue&#39;, &#39;green (color wheel) (x11 green)&#39;, &#39;green (crayola)&#39;, &#39;green (html/css color)&#39;, &#39;green (munsell)&#39;, &#39;green (ncs)&#39;, &#39;green (pigment)&#39;, &#39;green (ryb)&#39;, &#39;green-yellow&#39;, &#39;grullo&#39;, &#39;guppie green&#39;, &#39;halayà úbe&#39;, &#39;han blue&#39;, &#39;han purple&#39;, &#39;hansa yellow&#39;, &#39;harlequin&#39;, &#39;harvard crimson&#39;, &#39;harvest gold&#39;, &#39;heart gold&#39;, &#39;heliotrope&#39;, &#39;hollywood cerise&#39;, &#39;honeydew&#39;, &#39;honolulu blue&#39;, &quot;hooker&#39;s green&quot;, &#39;hot magenta&#39;, &#39;hot pink&#39;, &#39;hunter green&#39;, &#39;iceberg&#39;, &#39;icterine&#39;, &#39;illuminating emerald&#39;, &#39;imperial&#39;, &#39;imperial blue&#39;, &#39;imperial purple&#39;, &#39;imperial red&#39;, &#39;inchworm&#39;, &#39;india green&#39;, &#39;indian red&#39;, &#39;indian yellow&#39;, &#39;indigo&#39;, &#39;indigo (dye)&#39;, &#39;indigo (web)&#39;, &#39;international klein blue&#39;, &#39;international orange (aerospace)&#39;, &#39;international orange (engineering)&#39;, &#39;international orange (golden gate bridge)&#39;, &#39;iris&#39;, &#39;irresistible&#39;, &#39;isabelline&#39;, &#39;islamic green&#39;, &#39;italian sky blue&#39;, &#39;ivory&#39;, &#39;jade&#39;, &#39;japanese indigo&#39;, &#39;japanese violet&#39;, &#39;jasmine&#39;, &#39;jasper&#39;, &#39;jazzberry jam&#39;, &#39;jelly bean&#39;, &#39;jet&#39;, &#39;jonquil&#39;, &#39;june bud&#39;, &#39;jungle green&#39;, &#39;kelly green&#39;, &#39;kenyan copper&#39;, &#39;keppel&#39;, &#39;khaki (html/css) (khaki)&#39;, &#39;khaki (x11) (light khaki)&#39;, &#39;kobe&#39;, &#39;kobi&#39;, &#39;ku crimson&#39;, &#39;la salle green&#39;, &#39;languid lavender&#39;, &#39;lapis lazuli&#39;, &#39;laser lemon&#39;, &#39;laurel green&#39;, &#39;lava&#39;, &#39;lavender (floral)&#39;, &#39;lavender (web)&#39;, &#39;lavender blue&#39;, &#39;lavender blush&#39;, &#39;lavender gray&#39;, &#39;lavender indigo&#39;, &#39;lavender magenta&#39;, &#39;lavender mist&#39;, &#39;lavender pink&#39;, &#39;lavender purple&#39;, &#39;lavender rose&#39;, &#39;lawn green&#39;, &#39;lemon&#39;, &#39;lemon chiffon&#39;, &#39;lemon curry&#39;, &#39;lemon glacier&#39;, &#39;lemon lime&#39;, &#39;lemon meringue&#39;, &#39;lemon yellow&#39;, &#39;licorice&#39;, &#39;light apricot&#39;, &#39;light blue&#39;, &#39;light brown&#39;, &#39;light carmine pink&#39;, &#39;light coral&#39;, &#39;light cornflower blue&#39;, &#39;light crimson&#39;, &#39;light cyan&#39;, &#39;light fuchsia pink&#39;, &#39;light goldenrod yellow&#39;, &#39;light gray&#39;, &#39;light green&#39;, &#39;light khaki&#39;, &#39;light medium orchid&#39;, &#39;light moss green&#39;, &#39;light orchid&#39;, &#39;light pastel purple&#39;, &#39;light pink&#39;, &#39;light red ochre&#39;, &#39;light salmon&#39;, &#39;light salmon pink&#39;, &#39;light sea green&#39;, &#39;light sky blue&#39;, &#39;light slate gray&#39;, &#39;light steel blue&#39;, &#39;light taupe&#39;, &#39;light thulian pink&#39;, &#39;light yellow&#39;, &#39;lilac&#39;, &#39;lime (color wheel)&#39;, &#39;lime (web) (x11 green)&#39;, &#39;lime green&#39;, &#39;limerick&#39;, &#39;lincoln green&#39;, &#39;linen&#39;, &#39;lion&#39;, &#39;little boy blue&#39;, &#39;liver&#39;, &#39;liver (dogs)&#39;, &#39;liver (organ)&#39;, &#39;liver chestnut&#39;, &#39;lumber&#39;, &#39;lust&#39;, &#39;magenta&#39;, &#39;magenta (crayola)&#39;, &#39;magenta (dye)&#39;, &#39;magenta (pantone)&#39;, &#39;magenta (process)&#39;, &#39;magic mint&#39;, &#39;magnolia&#39;, &#39;mahogany&#39;, &#39;maize&#39;, &#39;majorelle blue&#39;, &#39;malachite&#39;, &#39;manatee&#39;, &#39;mango tango&#39;, &#39;mantis&#39;, &#39;mardi gras&#39;, &#39;maroon (crayola)&#39;, &#39;maroon (html/css)&#39;, &#39;maroon (x11)&#39;, &#39;mauve&#39;, &#39;mauve taupe&#39;, &#39;mauvelous&#39;, &#39;maya blue&#39;, &#39;meat brown&#39;, &#39;medium aquamarine&#39;, &#39;medium blue&#39;, &#39;medium candy apple red&#39;, &#39;medium carmine&#39;, &#39;medium champagne&#39;, &#39;medium electric blue&#39;, &#39;medium jungle green&#39;, &#39;medium lavender magenta&#39;, &#39;medium orchid&#39;, &#39;medium persian blue&#39;, &#39;medium purple&#39;, &#39;medium red-violet&#39;, &#39;medium ruby&#39;, &#39;medium sea green&#39;, &#39;medium sky blue&#39;, &#39;medium slate blue&#39;, &#39;medium spring bud&#39;, &#39;medium spring green&#39;, &#39;medium taupe&#39;, &#39;medium turquoise&#39;, &#39;medium tuscan red&#39;, &#39;medium vermilion&#39;, &#39;medium violet-red&#39;, &#39;mellow apricot&#39;, &#39;mellow yellow&#39;, &#39;melon&#39;, &#39;metallic seaweed&#39;, &#39;metallic sunburst&#39;, &#39;mexican pink&#39;, &#39;midnight blue&#39;, &#39;midnight green (eagle green)&#39;, &#39;midori&#39;, &#39;mikado yellow&#39;, &#39;mint&#39;, &#39;mint cream&#39;, &#39;mint green&#39;, &#39;misty rose&#39;, &#39;moccasin&#39;, &#39;mode beige&#39;, &#39;moonstone blue&#39;, &#39;mordant red 19&#39;, &#39;moss green&#39;, &#39;mountain meadow&#39;, &#39;mountbatten pink&#39;, &#39;msu green&#39;, &#39;mughal green&#39;, &#39;mulberry&#39;, &#39;mustard&#39;, &#39;myrtle green&#39;, &#39;sae/ece amber (color)&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blues</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;alice blue&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;light blue&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;baby blue&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;light sky blue&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;maya blue&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;cornflower blue&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;bleu de france&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;azure&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;blue sapphire&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;cobalt&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;egyptian blue&#39;</span><span class="p">],</span>
+         <span class="n">c</span><span class="p">[</span><span class="s1">&#39;duke blue&#39;</span><span class="p">]]</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="c1"># Temporarily set the colors</span>
+<span class="k">with</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rc_context</span><span class="p">({</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">:</span> <span class="n">mpl</span><span class="o">.</span><span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">blues</span><span class="p">)}):</span>
+    <span class="c1">#this plots horizontal lines for each y value of m.</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="n">m</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_36_0.png" src="../_images/plotting_36_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="peak-annotation-in-matplotlib">
+<h2>Peak annotation in matplotlib<a class="headerlink" href="#peak-annotation-in-matplotlib" title="Permalink to this headline">¶</a></h2>
+<p>This post is just some examples of annotating features in a plot in matplotlib. We illustrate finding peak maxima in a range, shading a region, shading peaks, and labeling a region of peaks. I find it difficult to remember the detailed syntax for these, so here are examples I could refer to later.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">w</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/raman.txt&#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Raman shift (cm$^{-1}$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity (counts)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="c1"># put a shaded rectangle over a region</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Some typical region&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">550</span><span class="p">,</span> <span class="mi">15500</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="mi">700</span><span class="p">,</span> <span class="mi">800</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">16000</span><span class="p">,</span> <span class="mi">16000</span><span class="p">],</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="c1"># shade the region in the spectrum</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span><span class="o">&gt;</span><span class="mi">1019</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">w</span><span class="o">&lt;</span><span class="mi">1054</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">w</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">w</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">])],</span> <span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">])]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Area = </span><span class="si">{0:1.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">area</span><span class="p">),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+            <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">50</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">5000</span><span class="p">),</span>
+            <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span>
+                            <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;angle,angleA=0,angleB=90,rad=10&quot;</span><span class="p">))</span>
+
+
+<span class="c1"># find a max in this region, and annotate it</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span><span class="o">&gt;</span><span class="mi">1250</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">w</span><span class="o">&lt;</span><span class="mi">1252</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">])],</span> <span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">])]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;A peak&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+            <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">350</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2000</span><span class="p">),</span>
+            <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span>
+                            <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;angle,angleA=0,angleB=90,rad=10&quot;</span><span class="p">))</span>
+
+<span class="c1"># find max in this region, and annotate it</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span><span class="o">&gt;</span><span class="mi">1380</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">w</span><span class="o">&lt;</span><span class="mi">1400</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">])],</span> <span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="n">ind</span><span class="p">])]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Another peak&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span>
+            <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">50</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">2000</span><span class="p">),</span>
+            <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span>
+                            <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;angle,angleA=0,angleB=90,rad=10&quot;</span><span class="p">))</span>
+
+<span class="c1"># indicate a region with connected arrows</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;CH bonds&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">2780</span><span class="p">,</span> <span class="mi">6000</span><span class="p">),</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mf">2800.</span><span class="p">,</span> <span class="mf">5000.</span><span class="p">),</span>  <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">3050</span><span class="p">,</span> <span class="mi">5000</span><span class="p">),</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
+            <span class="c1"># the arrows connect the xy to xytext coondinates</span>
+            <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">arrowstyle</span><span class="o">=</span><span class="s2">&quot;&lt;-&gt;&quot;</span><span class="p">,</span>
+                            <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+                            <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>  <span class="c1"># edge color</span>
+                            <span class="n">shrinkA</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">shrinkB</span><span class="o">=</span><span class="mf">0.1</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/plotting_39_0.png" src="../_images/plotting_39_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./blog"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="differential-equations.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Differential equations</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="units.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Units</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By John Kitchin<br/>
+    
+        &copy; Copyright 2023.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

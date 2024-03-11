@@ -1,0 +1,1246 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Units &#8212; pycse - Python Computations in Science and Engineering</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jkitchin/dsmles");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Programming" href="programming.html" />
+    <link rel="prev" title="Plotting" href="plotting.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-4H7VFJKEZY"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-4H7VFJKEZY');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/pycse.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">pycse - Python Computations in Science and Engineering</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to pycse - Python Computations in Science and Engineering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The pycse book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/intro.html">
+   The pycse book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/00-intro.html">
+   Introduction to Python and Jupyter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/01-jupyter.html">
+   More about using Jupyter notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/02-integration-1.html">
+   Integration in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/03-fode-1.html">
+   First-order differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/04-fode-2.html">
+   Systems of first-order differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/05-nth-odes.html">
+   N
+   <sup>
+    th
+   </sup>
+   order differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/07-nla-1.html">
+   Nonlinear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/08-nla-2.html">
+   Polynomials in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/09-bvp.html">
+   Boundary value problems
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/10-min-max.html">
+   Introduction to optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/11-regression.html">
+   Nonlinear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/12-nonlinear-regression-2.html">
+   Uncertainty quantification in nonlinear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/13-constrained-optimization.html">
+   Constrained optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/15-intro-linear-algebra.html">
+   Introduction to linear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/16-linear-algebra.html">
+   Applications of linear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/17-linear-algebra-2.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/18-linear-regression.html">
+   Linear regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/20-autograd-applications.html">
+   Introduction to automatic differentiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/21-machine-learning.html">
+   Introduction to machine learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/22-ml-2.html">
+   Topics in machine learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/23-gp.html">
+   Gaussian Process Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../book/conclusions.html">
+   Concluding remarks
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The pycse blog
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   The PYCSE blog
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic-python.html">
+   Basic python usage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math.html">
+   Math
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-algebra.html">
+   Linear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nonlinear-algebra.html">
+   Nonlinear algebra
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics.html">
+   Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data-analysis.html">
+   Data analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimization.html">
+   Optimization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="differential-equations.html">
+   Differential equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="programming.html">
+   Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="worked-examples.html">
+   Worked examples
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  pycse documentation
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/about.html">
+   About pycse
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/running-pycse.html">
+   Running pycse
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/pycse.html">
+   Documentation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/beginner.html">
+   pycse - Beginner mode
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/utils.html">
+   pycse.utils
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../docs/execution-statistics.html">
+   Build statistics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/blog/units.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/jkitchin/pycse"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/jkitchin/pycse/issues/new?title=Issue%20on%20page%20%2Fblog/units.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/jkitchin/pycse/edit/master/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/units.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jkitchin/pycse/master?urlpath=lab/tree/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/units.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://lab.amdatascience.com//hub/user-redirect/git-pull?repo=https://github.com/jkitchin/pycse&urlpath=lab/tree/pycse/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/units.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/jkitchin/pycse/blob/master/pycse-jb/pycse___python_computations_in_science_and_engineering/blog/units.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-units-in-python">
+   Using units in python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handling-units-with-the-quantities-module">
+   Handling units with the quantities module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#units-in-odes">
+   Units in ODEs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handling-units-with-dimensionless-equations">
+   Handling units with dimensionless equations
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Units</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-units-in-python">
+   Using units in python
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handling-units-with-the-quantities-module">
+   Handling units with the quantities module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#units-in-odes">
+   Units in ODEs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handling-units-with-dimensionless-equations">
+   Handling units with dimensionless equations
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="units">
+<h1>Units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-units-in-python">
+<h2>Using units in python<a class="headerlink" href="#using-units-in-python" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://matlab.cheme.cmu.edu/2011/08/05/using-cmu-units-in-matlab-for-basic-calculations/">Units in Matlab</a></p>
+<p>I think an essential feature in an engineering computational environment is properly handling units and unit conversions. Mathcad supports that pretty well. I wrote a <a class="reference external" href="https://github.com/jkitchin/matlab-cmu">package</a> for doing it in Matlab. Today I am going to explore units in python. Here are some of the packages that I have found which support units to some extent</p>
+<ol class="simple">
+<li><p><a class="reference external" href="http://pypi.python.org/pypi/units/">http://pypi.python.org/pypi/units/</a></p></li>
+<li><p><a class="reference external" href="http://packages.python.org/quantities/user/tutorial.html">http://packages.python.org/quantities/user/tutorial.html</a></p></li>
+<li><p><a class="reference external" href="http://dirac.cnrs-orleans.fr/ScientificPython/ScientificPythonManual/Scientific.Physics.PhysicalQuantities-module.html">http://dirac.cnrs-orleans.fr/ScientificPython/ScientificPythonManual/Scientific.Physics.PhysicalQuantities-module.html</a></p></li>
+<li><p><a class="reference external" href="http://home.scarlet.be/be052320/Unum.html">http://home.scarlet.be/be052320/Unum.html</a></p></li>
+<li><p><a class="reference external" href="https://simtk.org/home/python_units">https://simtk.org/home/python_units</a></p></li>
+</ol>
+</div>
+<div class="section" id="handling-units-with-the-quantities-module">
+<h2>Handling units with the quantities module<a class="headerlink" href="#handling-units-with-the-quantities-module" title="Permalink to this headline">¶</a></h2>
+<p>The quantities module (<a class="reference external" href="https://pypi.python.org/pypi/quantities">https://pypi.python.org/pypi/quantities</a>) is another option for handling units in python. We are going to try the previous example. It does not work, because scipy.optimize.fsolve is not designed to work with units.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+<span class="n">CA0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+<span class="n">CA</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">CA</span> <span class="o">-</span> <span class="n">CA0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="n">tguess</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">tguess</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tguess</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our function works fine with units, but fsolve does not pass numbers with units back to the function, so this function fails because the exponential function gets an argument with dimensions in it.  We can create a new function that solves this problem. We need to “wrap” the function we want to solve to make sure that it uses units, but returns a float number. Then, we put the units back onto the final solved value. Here is how we do that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span> <span class="k">as</span> <span class="n">_fsolve</span>
+
+<span class="n">CA0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+<span class="n">CA</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">CA</span> <span class="o">-</span> <span class="n">CA0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">t0</span><span class="p">):</span>
+    <span class="s1">&#39;wrapped fsolve command to work with units&#39;</span>
+    <span class="n">tU</span> <span class="o">=</span> <span class="n">t0</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>  <span class="c1"># units on initial guess, normalized</span>
+    <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="s1">&#39;t will be unitless, so we add unit to it. t * tU has units.&#39;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">tU</span><span class="p">))</span>
+
+    <span class="n">sol</span><span class="p">,</span> <span class="o">=</span> <span class="n">_fsolve</span><span class="p">(</span><span class="n">wrapped_func</span><span class="p">,</span> <span class="n">t0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sol</span> <span class="o">*</span> <span class="n">tU</span>
+
+<span class="n">tguess</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tguess</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span> <span class="k">as</span> <span class="n">_fsolve</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is a little tedious to do this, but we might only have to do it once if we store the new fsolve command in a module. You might notice the wrapped function we wrote above only works for one dimensional problems. If there are multiple dimensions, we have to be a little more careful. In the next example, we expand the wrapped function definition to do both one and multidimensional problems. It appears we cannot use numpy.array element-wise multiplication because you cannot mix units in an array. We will use lists instead. When the problem is one-dimensional, the function will take a scalar, but when it is multidimensional it will take a list or array. We will use try/except blocks to handle these two cases. We will assume multidimensional cases, and if that raises an exception because the argument is not a list, we assume it is scalar. Here is the more robust code example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span> <span class="k">as</span> <span class="n">_fsolve</span>
+
+<span class="k">def</span> <span class="nf">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">t0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;wrapped fsolve command to work with units. We get the units on</span>
+<span class="sd">    the function argument, then wrap the function so we can add units</span>
+<span class="sd">    to the argument and return floats. Finally we call the original</span>
+<span class="sd">    fsolve from scipy. Note: this does not support all of the options</span>
+<span class="sd">    to fsolve.&#39;&#39;&#39;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tU</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t0</span><span class="p">]</span>  <span class="c1"># units on initial guess, normalized</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="n">tU</span> <span class="o">=</span> <span class="n">t0</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="s1">&#39;t will be unitless, so we add unit to it. t * tU has units.&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="n">x1</span> <span class="o">*</span> <span class="n">x2</span> <span class="k">for</span> <span class="n">x1</span><span class="p">,</span><span class="n">x2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tU</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">T</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="n">tU</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">func</span><span class="p">(</span><span class="n">T</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">_fsolve</span><span class="p">(</span><span class="n">wrapped_func</span><span class="p">,</span> <span class="n">t0</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">x1</span> <span class="o">*</span> <span class="n">x2</span> <span class="k">for</span> <span class="n">x1</span><span class="p">,</span><span class="n">x2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">tU</span><span class="p">)]</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">sol</span> <span class="o">*</span> <span class="n">tU</span>
+
+<span class="c1">### Problem 1</span>
+<span class="n">CA0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+<span class="n">CA</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">CA</span> <span class="o">-</span> <span class="n">CA0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+
+<span class="n">tguess</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="n">sol1</span><span class="p">,</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tguess</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sol1 = &#39;</span><span class="p">,</span><span class="n">sol1</span><span class="p">)</span>
+
+<span class="c1">### Problem 2</span>
+<span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">X</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">25</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">J</span><span class="o">**</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">Xguess</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span><span class="p">,</span> <span class="mf">5.2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">J</span><span class="p">]</span>
+<span class="n">s2a</span><span class="p">,</span> <span class="n">s2b</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func2</span><span class="p">,</span> <span class="n">Xguess</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s2a = </span><span class="si">{0}</span><span class="se">\n</span><span class="s1">s2b = </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s2a</span><span class="p">,</span> <span class="n">s2b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span> <span class="k">as</span> <span class="n">_fsolve</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>That is pretty good. There is still room for improvement in the wrapped function, as it does not support all of the options that scipy.optimize.fsolve supports. Here is a draft of a function that does that. We have to return different numbers of arguments depending on the value of full_output. This function works, but I have not fully tested all the options. Here are three examples that work, including one with an argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span> <span class="k">as</span> <span class="n">_fsolve</span>
+
+<span class="k">def</span> <span class="nf">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span>
+           <span class="n">fprime</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">full_output</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col_deriv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+           <span class="n">xtol</span><span class="o">=</span><span class="mf">1.49012e-08</span><span class="p">,</span> <span class="n">maxfev</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">band</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+           <span class="n">epsfcn</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">diag</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;wrapped fsolve command to work with units. We get the units on</span>
+<span class="sd">    the function argument, then wrap the function so we can add units</span>
+<span class="sd">    to the argument and return floats. Finally we call the original</span>
+<span class="sd">    fsolve from scipy. &#39;&#39;&#39;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tU</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t0</span><span class="p">]</span>  <span class="c1"># units on initial guess, normalized</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="n">tU</span> <span class="o">=</span> <span class="n">t0</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="s1">&#39;t will be unitless, so we add unit to it. t * tU has units.&#39;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="n">x1</span> <span class="o">*</span> <span class="n">x2</span> <span class="k">for</span> <span class="n">x1</span><span class="p">,</span><span class="n">x2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">tU</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">T</span> <span class="o">=</span> <span class="n">t</span> <span class="o">*</span> <span class="n">tU</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">func</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">_fsolve</span><span class="p">(</span><span class="n">wrapped_func</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span>
+           <span class="n">fprime</span><span class="p">,</span> <span class="n">full_output</span><span class="p">,</span> <span class="n">col_deriv</span><span class="p">,</span>
+           <span class="n">xtol</span><span class="p">,</span> <span class="n">maxfev</span><span class="p">,</span> <span class="n">band</span><span class="p">,</span>
+           <span class="n">epsfcn</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">diag</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">full_output</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">infodict</span><span class="p">,</span> <span class="n">ier</span><span class="p">,</span> <span class="n">mesg</span> <span class="o">=</span> <span class="n">sol</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x1</span> <span class="o">*</span> <span class="n">x2</span> <span class="k">for</span> <span class="n">x1</span><span class="p">,</span><span class="n">x2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tU</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">tU</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">infodict</span><span class="p">,</span> <span class="n">ier</span><span class="p">,</span> <span class="n">mesg</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">x1</span> <span class="o">*</span> <span class="n">x2</span> <span class="k">for</span> <span class="n">x1</span><span class="p">,</span><span class="n">x2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">tU</span><span class="p">)]</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">sol</span> <span class="o">*</span> <span class="n">tU</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1">### Problem 1</span>
+<span class="n">CA0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+<span class="n">CA</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">CA</span> <span class="o">-</span> <span class="n">CA0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+
+<span class="n">tguess</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="n">sol1</span><span class="p">,</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tguess</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sol1 = &#39;</span><span class="p">,</span><span class="n">sol1</span><span class="p">)</span>
+
+<span class="c1">### Problem 2</span>
+<span class="k">def</span> <span class="nf">func2</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="o">=</span> <span class="n">X</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">25</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">J</span><span class="o">**</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="n">Xguess</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span><span class="p">,</span> <span class="mf">5.2</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">J</span><span class="p">]</span>
+<span class="n">sol</span><span class="p">,</span> <span class="n">infodict</span><span class="p">,</span> <span class="n">ier</span><span class="p">,</span> <span class="n">mesg</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func2</span><span class="p">,</span> <span class="n">Xguess</span><span class="p">,</span> <span class="n">full_output</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">s2a</span><span class="p">,</span> <span class="n">s2b</span> <span class="o">=</span> <span class="n">sol</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s2a = </span><span class="si">{0}</span><span class="se">\n</span><span class="s1">s2b = </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s2a</span><span class="p">,</span> <span class="n">s2b</span><span class="p">))</span>
+
+<span class="c1">### Problem 3 - with an arg</span>
+<span class="k">def</span> <span class="nf">func3</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">arg</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">Xguess</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kg</span>
+<span class="n">arg</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kg</span>
+
+<span class="n">sol3</span><span class="p">,</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func3</span><span class="p">,</span> <span class="n">Xguess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">arg</span><span class="p">,))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sol3 = &#39;</span><span class="p">,</span> <span class="n">sol3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span> <span class="k">as</span> <span class="n">_fsolve</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The only downside I can see in the quantities module is that it only handle temperature differences, and not absolute temperatures. If you only use absolute temperatures, this would not be a problem I think. But, if you have mixed temperature scales, the quantities module does not convert them on an absolute scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degC</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">rescale</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">K</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">rescale</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">degF</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">degC</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">rescale</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">K</span><span class="p">))</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nevertheless, this module seems pretty promising, and there are a lot more features than shown here. Some documentation can be found at <a class="reference external" href="http://pythonhosted.org/quantities/">http://pythonhosted.org/quantities/</a>.</p>
+</div>
+<div class="section" id="units-in-odes">
+<h2>Units in ODEs<a class="headerlink" href="#units-in-odes" title="Permalink to this headline">¶</a></h2>
+<p>We reconsider a simple ODE but this time with units. We will use the quantities package again.</p>
+<p>Here is the ODE, <span class="math notranslate nohighlight">\(\frac{dCa}{dt} = -k Ca\)</span> with <span class="math notranslate nohighlight">\(C_A(0) = 1.0\)</span> mol/L and <span class="math notranslate nohighlight">\(k = 0.23\)</span> 1/s. Compute the concentration after 5 s.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.23</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="n">Ca0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+
+<span class="k">def</span> <span class="nf">dCadt</span><span class="p">(</span><span class="n">Ca</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">Ca</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+
+<span class="n">tspan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">dCadt</span><span class="p">,</span> <span class="n">Ca0</span><span class="p">,</span> <span class="n">tspan</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">k</span> <span class="o">=</span> <span class="mf">0.23</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">Ca0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>No surprise, the units are lost. Now we start wrapping odeint. We wrap everything, and then test two examples including a single ODE, and a coupled set of ODEs with mixed units.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span> <span class="k">as</span> <span class="n">_odeint</span>
+
+<span class="k">def</span> <span class="nf">odeint</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span>
+           <span class="n">Dfun</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col_deriv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">full_output</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+           <span class="n">ml</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+           <span class="n">tcrit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">h0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">hmax</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">hmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+           <span class="n">ixpr</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mxstep</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mxhnil</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mxordn</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+           <span class="n">mxords</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">printmessg</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">wrapped_func</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="c1"># put units on T if they are on the original t</span>
+        <span class="c1"># check for units so we don&#39;t put them on twice</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">):</span>
+            <span class="n">T</span> <span class="o">=</span> <span class="n">T</span> <span class="o">*</span> <span class="n">t</span><span class="o">.</span><span class="n">units</span>
+        <span class="c1"># now for the dependent variable units. Y0 may be a scalar or</span>
+        <span class="c1"># a list or an array. we want to check each element of y0 for</span>
+        <span class="c1"># units, and add them to the corresponding element of Y0 if we</span>
+        <span class="c1"># need to.</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">uY0</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">Y0</span><span class="p">]</span> <span class="c1"># a list copy of contents of Y0</span>
+            <span class="c1"># this works if y0 is an iterable, eg. a list or array</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">yi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">y0</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">uY0</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s1">&#39;units&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">yi</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">):</span>
+
+                    <span class="n">uY0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">uY0</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">yi</span><span class="o">.</span><span class="n">units</span>
+
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="c1"># we have a scalar</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">):</span>
+                <span class="n">uY0</span> <span class="o">=</span> <span class="n">Y0</span> <span class="o">*</span> <span class="n">y0</span><span class="o">.</span><span class="n">units</span>
+
+        <span class="n">val</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">uY0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">val</span><span class="p">])</span>
+        <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">full_output</span><span class="p">:</span>
+        <span class="n">y</span><span class="p">,</span> <span class="n">infodict</span> <span class="o">=</span> <span class="n">_odeint</span><span class="p">(</span><span class="n">wrapped_func</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span>
+                              <span class="n">Dfun</span><span class="p">,</span> <span class="n">col_deriv</span><span class="p">,</span> <span class="n">full_output</span><span class="p">,</span>
+                              <span class="n">ml</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="p">,</span>
+                              <span class="n">tcrit</span><span class="p">,</span> <span class="n">h0</span><span class="p">,</span> <span class="n">hmax</span><span class="p">,</span> <span class="n">hmin</span><span class="p">,</span>
+                              <span class="n">ixpr</span><span class="p">,</span> <span class="n">mxstep</span><span class="p">,</span> <span class="n">mxhnil</span><span class="p">,</span> <span class="n">mxordn</span><span class="p">,</span>
+                              <span class="n">mxords</span><span class="p">,</span> <span class="n">printmessg</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">_odeint</span><span class="p">(</span><span class="n">wrapped_func</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span>
+                    <span class="n">Dfun</span><span class="p">,</span> <span class="n">col_deriv</span><span class="p">,</span> <span class="n">full_output</span><span class="p">,</span>
+                    <span class="n">ml</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="p">,</span>
+                    <span class="n">tcrit</span><span class="p">,</span> <span class="n">h0</span><span class="p">,</span> <span class="n">hmax</span><span class="p">,</span> <span class="n">hmin</span><span class="p">,</span>
+                    <span class="n">ixpr</span><span class="p">,</span> <span class="n">mxstep</span><span class="p">,</span> <span class="n">mxhnil</span><span class="p">,</span> <span class="n">mxordn</span><span class="p">,</span>
+                    <span class="n">mxords</span><span class="p">,</span> <span class="n">printmessg</span><span class="p">)</span>
+
+    <span class="c1"># now we need to put units onto the solution units should be the</span>
+    <span class="c1"># same as y0. We cannot put mixed units in an array, so, we return a list</span>
+    <span class="n">m</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># y is an ndarray, so it has a shape</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># more than one equation, we need a list</span>
+        <span class="n">uY</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">yi</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">yi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">y0</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">uY</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s1">&#39;units&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">yi</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">):</span>
+                <span class="n">uY</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">yi</span><span class="o">.</span><span class="n">units</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">uY</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[:,</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">uY</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y0</span><span class="o">.</span><span class="n">units</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">uY</span>
+
+
+    <span class="k">if</span> <span class="n">full_output</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">y</span><span class="p">,</span> <span class="n">infodict</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">y</span>
+
+<span class="c1">##################################################################</span>
+<span class="c1"># test a single ODE</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.23</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="n">Ca0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+
+<span class="k">def</span> <span class="nf">dCadt</span><span class="p">(</span><span class="n">Ca</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">Ca</span>
+
+<span class="n">tspan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">dCadt</span><span class="p">,</span> <span class="n">Ca0</span><span class="p">,</span> <span class="n">tspan</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tspan</span><span class="p">,</span> <span class="n">sol</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tspan</span><span class="o">.</span><span class="n">dimensionality</span><span class="o">.</span><span class="n">latex</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$C_A$ (</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">dimensionality</span><span class="o">.</span><span class="n">latex</span><span class="p">))</span>
+
+<span class="c1">##################################################################</span>
+<span class="c1"># test coupled ODEs</span>
+<span class="n">lbmol</span> <span class="o">=</span> <span class="mf">453.59237</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">mol</span>
+
+<span class="n">kprime</span> <span class="o">=</span> <span class="mf">0.0266</span> <span class="o">*</span> <span class="n">lbmol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">hr</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">lb</span>
+<span class="n">Fa0</span> <span class="o">=</span> <span class="mf">1.08</span> <span class="o">*</span> <span class="n">lbmol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">hr</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.0166</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">lb</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.15</span>
+
+<span class="k">def</span> <span class="nf">dFdW</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">alpha0</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">F</span>
+    <span class="n">dXdW</span> <span class="o">=</span> <span class="n">kprime</span> <span class="o">/</span> <span class="n">Fa0</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">X</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span>
+    <span class="n">dydW</span> <span class="o">=</span> <span class="o">-</span> <span class="n">alpha0</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">X</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dXdW</span><span class="p">,</span> <span class="n">dydW</span><span class="p">]</span>
+
+<span class="n">X0</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">dimensionless</span>
+<span class="n">y0</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">F0</span> <span class="o">=</span> <span class="p">[</span><span class="n">X0</span><span class="p">,</span> <span class="n">y0</span><span class="p">]</span> <span class="c1"># one without units, one with units, both are dimensionless</span>
+
+<span class="n">wspan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">60</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">lb</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">dFdW</span><span class="p">,</span> <span class="n">F0</span><span class="p">,</span> <span class="n">wspan</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">alpha</span><span class="p">,))</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sol</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wspan</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">wspan</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;$P/P_0$&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Catalyst weight (</span><span class="si">{0}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">wspan</span><span class="o">.</span><span class="n">dimensionality</span><span class="o">.</span><span class="n">latex</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>That is not too bad. This is another example of a function you would want to save in a module for reuse. There is one bad feature of the wrapped odeint function, and that is that it changes the solution for coupled ODEs from an ndarray to a list. That is necessary because you apparently cannot have mixed units in an ndarray. It is fine, however, to have a list of mixed units. This is not a huge problem, but it changes the syntax for plotting results for the wrapped odeint function compared to the unwrapped function without units.</p>
+</div>
+<div class="section" id="handling-units-with-dimensionless-equations">
+<h2>Handling units with dimensionless equations<a class="headerlink" href="#handling-units-with-dimensionless-equations" title="Permalink to this headline">¶</a></h2>
+<p>As we have seen, handling units with third party functions is fragile, and often requires additional code to wrap the function to handle the units. An alternative approach that avoids the wrapping is to rescale the equations so they are dimensionless. Then, we should be able to use all the standard external functions without modification. We obtain the final solutions by rescaling back to the answers we want.</p>
+<p>Before doing the examples, let us consider how the quantities package handles dimensionless numbers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span> <span class="c1"># characteristic length</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">L</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">L</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span> <span class="c1"># characteristic length</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, the dimensionless number is scaled properly, and is listed as dimensionless. The result is still an instance of a quantities object though. That is not likely to be a problem.</p>
+<p>Now, we consider using fsolve with dimensionless equations. Our goal is to solve <span class="math notranslate nohighlight">\(C_A = C_{A0} \exp(-k t)\)</span> for the time required to reach a desired <span class="math notranslate nohighlight">\(C_A\)</span>. We let <span class="math notranslate nohighlight">\(X = Ca / Ca0\)</span> and <span class="math notranslate nohighlight">\(\tau = t * k\)</span>, which leads to <span class="math notranslate nohighlight">\(X = \exp{-\tau}\)</span> in dimensionless terms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+
+<span class="n">CA0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+<span class="n">CA</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>  <span class="c1"># desired exit concentration</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+
+<span class="c1"># we need new dimensionless variables</span>
+<span class="c1"># let X = Ca / Ca0</span>
+<span class="c1"># so, Ca = Ca0 * X</span>
+
+<span class="c1"># let tau = t * k</span>
+<span class="c1"># so t = tau / k</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">CA</span> <span class="o">/</span> <span class="n">CA0</span> <span class="c1"># desired exit dimensionless concentration</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">tau</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">X</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">tau</span><span class="p">)</span>
+
+<span class="n">tauguess</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">tauguess</span><span class="p">))</span> <span class="c1"># confirm we have a dimensionless function</span>
+
+<span class="n">tau_sol</span><span class="p">,</span> <span class="o">=</span> <span class="n">fsolve</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tauguess</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">tau_sol</span> <span class="o">/</span> <span class="n">k</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">fsolve</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now consider the ODE <span class="math notranslate nohighlight">\(\frac{dCa}{dt} = -k Ca\)</span>. We let <span class="math notranslate nohighlight">\(X = Ca/Ca0\)</span>, so <span class="math notranslate nohighlight">\(Ca0 dX = dCa\)</span>. Let <span class="math notranslate nohighlight">\(\tau = t * k\)</span> which in this case is dimensionless. That means <span class="math notranslate nohighlight">\(d\tau = k dt\)</span>. Substitution of these new variables leads to:</p>
+<p><span class="math notranslate nohighlight">\(Ca0*k \frac{dX}{d\tau} = -k Ca0 X \)</span></p>
+<p>or equivalently:
+<span class="math notranslate nohighlight">\(\frac{dX}{d\tau} = -X \)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.23</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="n">Ca0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+
+<span class="c1"># Let X = Ca/Ca0  -&gt; Ca = Ca0 * X  dCa = dX/Ca0</span>
+<span class="c1"># let tau = t * k -&gt; dt = 1/k dtau</span>
+
+
+<span class="k">def</span> <span class="nf">dXdtau</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">X</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
+
+<span class="n">tspan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="n">tauspan</span> <span class="o">=</span> <span class="n">tspan</span> <span class="o">*</span> <span class="n">k</span>
+
+<span class="n">X0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">X_sol</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span><span class="n">dXdtau</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">tauspan</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ca at t = </span><span class="si">{0}</span><span class="s1"> = </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tspan</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">X_sol</span><span class="o">.</span><span class="n">flatten</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">Ca0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">quantities</span> <span class="k">as</span> <span class="nn">u</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">k</span> <span class="o">=</span> <span class="mf">0.23</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">Ca0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">mol</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">L</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;quantities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>That is pretty much it. Using dimensionless quantities simplifies the need to write wrapper code, although it does increase the effort to rederive your equations (with corresponding increased opportunities to make mistakes). Using units to confirm your dimensionless derivation reduces those opportunities.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./blog"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="plotting.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Plotting</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="programming.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Programming</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By John Kitchin<br/>
+    
+        &copy; Copyright 2023.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
